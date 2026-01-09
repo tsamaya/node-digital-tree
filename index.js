@@ -1,4 +1,3 @@
-const { isString, isFunction } = require('util')
 const debug = require('./lib/debug')('Trie')
 const _DFS = Symbol('dfs')
 const _BFS = Symbol('bfs')
@@ -256,7 +255,8 @@ class Trie {
 	_isValidKey(key) {
 		// const rightType = Array.isArray(key) || isString(key)
 		// return rightType && key.length > 0
-		return isFunction(key[Symbol.iterator])
+
+		return typeof key[Symbol.iterator] === 'function'
 	}
 
 	_newTrieLikeThis(root, shallow = false) {
